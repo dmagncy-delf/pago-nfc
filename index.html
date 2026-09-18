@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pago por transferencia</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f5f7;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      border-radius: 24px;
+      padding: 32px 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.08);
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 27px;
+    }
+
+    .subtitle {
+      color: #777;
+      margin: 8px 0 30px;
+    }
+
+    .label {
+      color: #888;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 22px;
+      text-transform: uppercase;
+    }
+
+    .value {
+      margin-top: 6px;
+      font-size: 18px;
+      font-weight: 650;
+    }
+
+    .clabe {
+      font-size: 21px;
+      letter-spacing: 1px;
+      word-break: break-all;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      background: #111;
+      color: white;
+      padding: 17px;
+      border-radius: 14px;
+      margin-top: 25px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #mensaje {
+      color: #16883e;
+      font-weight: 600;
+      min-height: 22px;
+      margin-top: 12px;
+    }
+
+    .instructions {
+      text-align: left;
+      border-top: 1px solid #eee;
+      margin-top: 22px;
+      padding-top: 22px;
+      color: #555;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="icon">💳</div>
+
+  <h1>Paga por transferencia</h1>
+
+  <div class="subtitle">
+    Desde cualquier aplicación bancaria
+  </div>
+
+  <div class="label">Negocio</div>
+  <div class="value">NEGOCIO DE PRUEBA</div>
+
+  <div class="label">Institución</div>
+  <div class="value">Mercado Pago</div>
+
+  <div class="label">CLABE</div>
+  <div class="value clabe" id="clabe">
+    000000000000000000
+  </div>
+
+  <button onclick="copiarClabe()">
+    COPIAR CLABE
+  </button>
+
+  <div id="mensaje"></div>
+
+  <div class="instructions">
+    <strong>¿Cómo pagar?</strong><br><br>
+    1. Presiona “Copiar CLABE”.<br>
+    2. Abre la app de tu banco.<br>
+    3. Selecciona transferencia SPEI.<br>
+    4. Pega la CLABE.<br>
+    5. Ingresa el monto y confirma.
+  </div>
+
+</div>
+
+<script>
+async function copiarClabe() {
+  const clabe = document
+    .getElementById("clabe")
+    .innerText
+    .replace(/\s/g, "");
+
+  try {
+    await navigator.clipboard.writeText(clabe);
+    document.getElementById("mensaje").innerText =
+      "✓ CLABE copiada";
+  } catch (error) {
+    document.getElementById("mensaje").innerText =
+      "Mantén presionada la CLABE para copiarla";
+  }
+}
+</script>
+
+</body>
+</html>
