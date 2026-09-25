@@ -3,155 +3,300 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pago por transferencia</title>
+  <meta name="theme-color" content="#050505">
+  <title>Pago | Suplementos T21</title>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f5f5f7;
       min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, #073c3b 0%, #071b1b 22%, #050505 55%);
+      color: #ffffff;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 24px 18px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 430px;
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .logo {
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 1px solid rgba(25, 231, 211, .35);
+      box-shadow: 0 0 30px rgba(25, 231, 211, .12);
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 25px;
+      letter-spacing: 1px;
+    }
+
+    .brand p {
+      margin: 7px 0 0;
+      color: #9b9b9b;
+      font-size: 14px;
     }
 
     .card {
-      width: 100%;
-      max-width: 420px;
-      background: white;
+      background: rgba(18, 18, 18, .96);
+      border: 1px solid #292929;
       border-radius: 24px;
-      padding: 32px 24px;
-      box-shadow: 0 10px 40px rgba(0,0,0,.08);
+      padding: 26px 22px;
+      box-shadow: 0 18px 55px rgba(0,0,0,.55);
+    }
+
+    .payment-title {
       text-align: center;
+      margin-bottom: 26px;
     }
 
-    .icon {
-      font-size: 40px;
-      margin-bottom: 12px;
+    .payment-title .tag {
+      display: inline-block;
+      color: #19e7d3;
+      background: rgba(25,231,211,.08);
+      border: 1px solid rgba(25,231,211,.22);
+      border-radius: 30px;
+      padding: 7px 13px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 13px;
     }
 
-    h1 {
+    .payment-title h2 {
       margin: 0;
-      font-size: 27px;
+      font-size: 25px;
     }
 
-    .subtitle {
-      color: #777;
-      margin: 8px 0 30px;
+    .payment-title p {
+      color: #888;
+      font-size: 14px;
+      margin: 8px 0 0;
+    }
+
+    .data-box {
+      background: #0a0a0a;
+      border: 1px solid #242424;
+      border-radius: 17px;
+      padding: 5px 18px;
+    }
+
+    .row {
+      padding: 17px 0;
+      border-bottom: 1px solid #222;
+    }
+
+    .row:last-child {
+      border-bottom: none;
     }
 
     .label {
-      color: #888;
-      font-size: 12px;
-      font-weight: 600;
-      margin-top: 22px;
+      color: #777;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.3px;
       text-transform: uppercase;
+      margin-bottom: 6px;
     }
 
     .value {
-      margin-top: 6px;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 650;
     }
 
     .clabe {
-      font-size: 21px;
-      letter-spacing: 1px;
+      color: #19e7d3;
+      font-size: 19px;
+      letter-spacing: .8px;
       word-break: break-all;
     }
 
     button {
       width: 100%;
       border: none;
-      background: #111;
-      color: white;
+      margin-top: 20px;
       padding: 17px;
       border-radius: 14px;
-      margin-top: 25px;
-      font-size: 16px;
-      font-weight: 700;
+      background: linear-gradient(135deg, #13bfae, #20f1da);
+      color: #00100e;
+      font-size: 15px;
+      font-weight: 800;
       cursor: pointer;
+      letter-spacing: .4px;
+      box-shadow: 0 8px 25px rgba(25,231,211,.18);
+    }
+
+    button:active {
+      transform: scale(.98);
     }
 
     #mensaje {
-      color: #16883e;
-      font-weight: 600;
-      min-height: 22px;
+      text-align: center;
+      color: #19e7d3;
+      font-size: 14px;
+      font-weight: 650;
+      min-height: 20px;
       margin-top: 12px;
     }
 
     .instructions {
-      text-align: left;
-      border-top: 1px solid #eee;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #252525;
+      color: #a3a3a3;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .instructions strong {
+      color: #ffffff;
+    }
+
+    .footer {
+      text-align: center;
       margin-top: 22px;
-      padding-top: 22px;
-      color: #555;
-      line-height: 1.8;
-      font-size: 14px;
+      color: #777;
+      font-size: 12px;
+    }
+
+    .thanks {
+      color: #ffffff;
+      font-weight: 650;
+      margin-bottom: 5px;
     }
   </style>
 </head>
 
 <body>
 
-<div class="card">
+<div class="container">
 
-  <div class="icon">💳</div>
+  <div class="brand">
 
-  <h1>Paga por transferencia</h1>
+    <!-- LOGO -->
+    <img
+      class="logo"
+      src="logo.png"
+      alt="Suplementos T21"
+    >
 
-  <div class="subtitle">
-    Desde cualquier aplicación bancaria
+    <h1>SUPLEMENTOS T21</h1>
+    <p>Nutrición • Rendimiento • Resultados</p>
   </div>
 
-  <div class="label">Negocio</div>
-  <div class="value">NEGOCIO DE PRUEBA</div>
+  <div class="card">
 
-  <div class="label">Institución</div>
-  <div class="value">Mercado Pago</div>
+    <div class="payment-title">
+      <div class="tag">TRANSFERENCIA SPEI</div>
 
-  <div class="label">CLABE</div>
-  <div class="value clabe" id="clabe">
-    000000000000000000
+      <h2>Paga tu compra</h2>
+
+      <p>Realiza tu transferencia desde cualquier banco</p>
+    </div>
+
+
+    <div class="data-box">
+
+      <div class="row">
+        <div class="label">Titular de la cuenta</div>
+        <div class="value">Octavio Sosa</div>
+      </div>
+
+      <div class="row">
+        <div class="label">Banco</div>
+        <div class="value">BBVA</div>
+      </div>
+
+      <div class="row">
+        <div class="label">CLABE</div>
+        <div class="value clabe" id="clabe">012180011408280170</div>
+
+      </div>
+
+    </div>
+
+
+    <button onclick="copiarClabe()">
+      COPIAR CLABE
+    </button>
+
+    <div id="mensaje"></div>
+
+
+    <div class="instructions">
+
+      <strong>¿Cómo realizar tu pago?</strong>
+
+      <br><br>
+
+      1. Presiona <strong>“Copiar CLABE”.</strong><br>
+      2. Abre la aplicación de tu banco.<br>
+      3. Selecciona transferencia SPEI.<br>
+      4. Pega la CLABE de Suplementos T21.<br>
+      5. Ingresa el monto de tu compra y confirma.
+
+    </div>
+
   </div>
 
-  <button onclick="copiarClabe()">
-    COPIAR CLABE
-  </button>
 
-  <div id="mensaje"></div>
+  <div class="footer">
 
-  <div class="instructions">
-    <strong>¿Cómo pagar?</strong><br><br>
-    1. Presiona “Copiar CLABE”.<br>
-    2. Abre la app de tu banco.<br>
-    3. Selecciona transferencia SPEI.<br>
-    4. Pega la CLABE.<br>
-    5. Ingresa el monto y confirma.
+    <div class="thanks">
+      Gracias por tu compra 💪
+    </div>
+
+    Suplementos T21
+
   </div>
 
 </div>
 
+
 <script>
+
 async function copiarClabe() {
+
   const clabe = document
     .getElementById("clabe")
     .innerText
     .replace(/\s/g, "");
 
   try {
+
     await navigator.clipboard.writeText(clabe);
+
     document.getElementById("mensaje").innerText =
-      "✓ CLABE copiada";
+      "✓ CLABE copiada correctamente";
+
   } catch (error) {
+
     document.getElementById("mensaje").innerText =
       "Mantén presionada la CLABE para copiarla";
+
   }
+
 }
+
 </script>
 
 </body>
