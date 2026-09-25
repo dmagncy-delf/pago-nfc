@@ -7,7 +7,9 @@
   <title>Pago | Ichie Sushi</title>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -54,6 +56,14 @@
       font-size: 13px;
       letter-spacing: 2px;
       text-transform: uppercase;
+    }
+
+    .red-line {
+      width: 32px;
+      height: 2px;
+      background: #b94a45;
+      margin: 13px auto 0;
+      border-radius: 2px;
     }
 
     .card {
@@ -159,7 +169,7 @@
       margin-top: 12px;
     }
 
-    .instructions {
+    .instrucciones {
       border-top: 1px solid #252825;
       margin-top: 20px;
       padding-top: 20px;
@@ -168,7 +178,7 @@
       line-height: 1.75;
     }
 
-    .instructions strong {
+    .instrucciones strong {
       color: white;
     }
 
@@ -179,19 +189,11 @@
       color: #666;
     }
 
-    .thanks {
+    .gracias {
       color: white;
       font-size: 14px;
       font-weight: 650;
       margin-bottom: 5px;
-    }
-
-    .red-line {
-      width: 32px;
-      height: 2px;
-      background: #b94a45;
-      margin: 13px auto 0;
-      border-radius: 2px;
     }
   </style>
 </head>
@@ -226,7 +228,7 @@
 
       <div class="row">
         <div class="label">Titular de la cuenta</div>
-        <div class="value">María Silvia Ramirez Mendes</div>
+        <div class="value">María Silvia Ramírez Mendes</div>
       </div>
 
       <div class="row">
@@ -236,9 +238,7 @@
 
       <div class="row">
         <div class="label">CLABE</div>
-        <div class="value clabe" id="clabe">
-          722969069529615365
-        </div>
+        <div class="value clabe" id="clabe">722969069529615365</div>
       </div>
 
     </div>
@@ -249,7 +249,7 @@
 
     <div id="mensaje"></div>
 
-    <div class="instructions">
+    <div class="instrucciones">
       <strong>¿Cómo realizar tu pago?</strong><br><br>
 
       1. Presiona <strong>“Copiar CLABE”.</strong><br>
@@ -262,7 +262,7 @@
   </div>
 
   <div class="footer">
-    <div class="thanks">Gracias por tu visita 🍣</div>
+    <div class="gracias">Gracias por tu visita 🍣</div>
     Ichie Sushi
   </div>
 
@@ -270,14 +270,12 @@
 
 <script>
 async function copiarClabe() {
-
   const clabe = document
     .getElementById("clabe")
     .innerText
     .replace(/\s/g, "");
 
   try {
-
     await navigator.clipboard.writeText(clabe);
 
     document.getElementById("mensaje").innerText =
@@ -287,7 +285,6 @@ async function copiarClabe() {
 
     document.getElementById("mensaje").innerText =
       "Mantén presionada la CLABE para copiarla";
-
   }
 }
 </script>
