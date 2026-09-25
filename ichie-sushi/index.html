@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090c">
+  <title>Pago | Ichie Sushi</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #17251d 0%, #0c100e 30%, #07080a 65%);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 25px 18px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 430px;
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .logo {
+      width: 165px;
+      height: 165px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 14px;
+      border: 1px solid rgba(126, 181, 135, .25);
+      box-shadow: 0 0 35px rgba(126, 181, 135, .10);
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 27px;
+      letter-spacing: 1px;
+    }
+
+    .brand p {
+      margin: 7px 0 0;
+      color: #89918b;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .card {
+      background: rgba(16, 18, 18, .96);
+      border: 1px solid #252a27;
+      border-radius: 25px;
+      padding: 27px 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.55);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 14px;
+      border-radius: 30px;
+      background: rgba(126,181,135,.08);
+      border: 1px solid rgba(126,181,135,.22);
+      color: #8bc597;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      margin-bottom: 13px;
+    }
+
+    h2 {
+      font-size: 25px;
+      margin: 0;
+    }
+
+    .header p {
+      color: #858585;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 8px 0 0;
+    }
+
+    .data {
+      background: #090b0a;
+      border: 1px solid #242824;
+      border-radius: 18px;
+      padding: 4px 18px;
+    }
+
+    .row {
+      padding: 17px 0;
+      border-bottom: 1px solid #202320;
+    }
+
+    .row:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      color: #707570;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .value {
+      font-size: 17px;
+      font-weight: 650;
+    }
+
+    .clabe {
+      color: #8bc597;
+      font-size: 19px;
+      letter-spacing: .6px;
+      word-break: break-all;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      margin-top: 20px;
+      padding: 17px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #699c73, #92ca9d);
+      color: #071009;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      letter-spacing: .4px;
+      box-shadow: 0 8px 25px rgba(126,181,135,.15);
+    }
+
+    button:active {
+      transform: scale(.98);
+    }
+
+    #mensaje {
+      color: #8bc597;
+      font-weight: 650;
+      font-size: 14px;
+      text-align: center;
+      min-height: 20px;
+      margin-top: 12px;
+    }
+
+    .instructions {
+      border-top: 1px solid #252825;
+      margin-top: 20px;
+      padding-top: 20px;
+      color: #999;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .instructions strong {
+      color: white;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 22px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    .thanks {
+      color: white;
+      font-size: 14px;
+      font-weight: 650;
+      margin-bottom: 5px;
+    }
+
+    .red-line {
+      width: 32px;
+      height: 2px;
+      background: #b94a45;
+      margin: 13px auto 0;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="brand">
+    <img class="logo" src="logo.png" alt="Ichie Sushi">
+
+    <h1>ICHIE SUSHI</h1>
+    <p>Sushi & Bar</p>
+
+    <div class="red-line"></div>
+  </div>
+
+  <div class="card">
+
+    <div class="header">
+      <div class="tag">TRANSFERENCIA SPEI</div>
+
+      <h2>Paga tu cuenta</h2>
+
+      <p>
+        Realiza tu transferencia de forma rápida
+        desde la aplicación de tu banco.
+      </p>
+    </div>
+
+    <div class="data">
+
+      <div class="row">
+        <div class="label">Titular de la cuenta</div>
+        <div class="value">María Silvia Ramirez Mendes</div>
+      </div>
+
+      <div class="row">
+        <div class="label">Institución</div>
+        <div class="value">Mercado Pago</div>
+      </div>
+
+      <div class="row">
+        <div class="label">CLABE</div>
+        <div class="value clabe" id="clabe">
+          722969069529615365
+        </div>
+      </div>
+
+    </div>
+
+    <button onclick="copiarClabe()">
+      COPIAR CLABE
+    </button>
+
+    <div id="mensaje"></div>
+
+    <div class="instructions">
+      <strong>¿Cómo realizar tu pago?</strong><br><br>
+
+      1. Presiona <strong>“Copiar CLABE”.</strong><br>
+      2. Abre la aplicación de tu banco.<br>
+      3. Selecciona transferencia SPEI.<br>
+      4. Pega la CLABE.<br>
+      5. Ingresa el total de tu cuenta y confirma.
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="thanks">Gracias por tu visita 🍣</div>
+    Ichie Sushi
+  </div>
+
+</div>
+
+<script>
+async function copiarClabe() {
+
+  const clabe = document
+    .getElementById("clabe")
+    .innerText
+    .replace(/\s/g, "");
+
+  try {
+
+    await navigator.clipboard.writeText(clabe);
+
+    document.getElementById("mensaje").innerText =
+      "✓ CLABE copiada correctamente";
+
+  } catch (error) {
+
+    document.getElementById("mensaje").innerText =
+      "Mantén presionada la CLABE para copiarla";
+
+  }
+}
+</script>
+
+</body>
+</html>
