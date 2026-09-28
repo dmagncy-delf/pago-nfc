@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ff1684">
+
+  <title>Pago | Zona Frezona</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, #ff8dc5 0%, #ff4ca2 32%, #f51682 68%, #c90063 100%);
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 18px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 430px;
+      text-align: center;
+    }
+
+    .logo-container {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 18px;
+      background: #ffffff;
+      border-radius: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      box-shadow: 0 15px 40px rgba(113, 0, 51, .25);
+    }
+
+    .logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 22px;
+    }
+
+    .business-name {
+      font-size: 30px;
+      font-weight: 900;
+      margin-bottom: 5px;
+      letter-spacing: -.5px;
+    }
+
+    .subtitle {
+      color: rgba(255,255,255,.82);
+      font-size: 15px;
+      margin-bottom: 27px;
+    }
+
+    .card {
+      background: #ffffff;
+      color: #4a1831;
+      border-radius: 27px;
+      padding: 27px 22px;
+      text-align: left;
+      box-shadow: 0 20px 55px rgba(105, 0, 49, .25);
+    }
+
+    .label {
+      color: #c25789;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      font-weight: 800;
+      margin-bottom: 7px;
+    }
+
+    .value {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 23px;
+      line-height: 1.4;
+    }
+
+    .clabe {
+      color: #e90070;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: .7px;
+      word-break: break-all;
+      margin-bottom: 15px;
+    }
+
+    .copy-button {
+      width: 100%;
+      border: none;
+      border-radius: 15px;
+      padding: 17px;
+      background: linear-gradient(135deg, #ff3694, #e90070);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(233, 0, 112, .25);
+      transition: transform .15s ease;
+    }
+
+    .copy-button:active {
+      transform: scale(.98);
+    }
+
+    .status {
+      min-height: 20px;
+      margin-top: 12px;
+      text-align: center;
+      color: #e90070;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .divider {
+      width: 55px;
+      height: 4px;
+      border-radius: 20px;
+      background: #ff69ae;
+      margin: 22px auto;
+    }
+
+    .instructions {
+      color: #876275;
+      font-size: 13px;
+      line-height: 1.65;
+      text-align: center;
+    }
+
+    .spei-container {
+      text-align: center;
+    }
+
+    .spei {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 8px 13px;
+      background: #fff0f7;
+      border-radius: 20px;
+      color: #d80069;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .footer {
+      margin-top: 22px;
+      color: rgba(255,255,255,.8);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <div class="logo-container">
+      <img
+        src="logo.png"
+        alt="Zona Frezona"
+        class="logo"
+      >
+    </div>
+
+    <h1 class="business-name">Zona Frezona</h1>
+    <p class="subtitle">Realiza tu pago por transferencia</p>
+
+    <section class="card">
+
+      <p class="label">Beneficiario</p>
+      <p class="value">Aaron Arreola</p>
+
+      <p class="label">Banco</p>
+      <p class="value">Nu</p>
+
+      <p class="label">CLABE</p>
+      <p class="clabe" id="clabe">638180010144581916</p>
+
+      <button class="copy-button" onclick="copiarClabe()">
+        Copiar CLABE
+      </button>
+
+      <div class="status" id="status"></div>
+
+      <div class="divider"></div>
+
+      <p class="instructions">
+        Copia la CLABE, abre la aplicación de tu banco
+        y realiza tu transferencia.
+      </p>
+
+      <div class="spei-container">
+        <span class="spei">TRANSFERENCIA SPEI</span>
+      </div>
+
+    </section>
+
+    <p class="footer">
+      Verifica que los datos sean correctos antes de realizar tu transferencia.
+    </p>
+
+  </main>
+
+  <script>
+    function copiarClabe() {
+      const clabe = document.getElementById("clabe").innerText;
+      const status = document.getElementById("status");
+
+      navigator.clipboard.writeText(clabe)
+        .then(() => {
+          status.innerText = "✓ CLABE copiada";
+
+          setTimeout(() => {
+            status.innerText = "";
+          }, 2500);
+        })
+        .catch(() => {
+          const textarea = document.createElement("textarea");
+          textarea.value = clabe;
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textarea);
+
+          status.innerText = "✓ CLABE copiada";
+        });
+    }
+  </script>
+
+</body>
+</html>
