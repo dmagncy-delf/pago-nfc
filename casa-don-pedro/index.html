@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ff7a00">
+
+  <title>Pago | Casa Don Pedro</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, #ffb52e 0%, #ff8515 35%, #ef4d0b 70%, #b82808 100%);
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 18px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 430px;
+      text-align: center;
+    }
+
+    .logo-container {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 18px;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 15px 40px rgba(80, 20, 0, .28);
+    }
+
+    .logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 22px;
+    }
+
+    .business-name {
+      font-size: 29px;
+      font-weight: 900;
+      margin-bottom: 5px;
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      color: rgba(255,255,255,.88);
+      font-size: 15px;
+      margin-bottom: 27px;
+    }
+
+    .card {
+      background: #ffffff;
+      color: #35160d;
+      border-radius: 27px;
+      padding: 27px 22px;
+      text-align: left;
+      box-shadow: 0 20px 55px rgba(80, 20, 0, .28);
+    }
+
+    .label {
+      color: #c94a18;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      font-weight: 800;
+      margin-bottom: 7px;
+    }
+
+    .value {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 23px;
+      line-height: 1.4;
+    }
+
+    .clabe {
+      color: #e33a0b;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: .7px;
+      word-break: break-all;
+      margin-bottom: 15px;
+    }
+
+    .copy-button {
+      width: 100%;
+      border: none;
+      border-radius: 15px;
+      padding: 17px;
+      background: linear-gradient(135deg, #ff7a00, #e9340b);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(220, 55, 10, .25);
+      transition: transform .15s ease;
+    }
+
+    .copy-button:active {
+      transform: scale(.98);
+    }
+
+    .status {
+      min-height: 20px;
+      margin-top: 12px;
+      text-align: center;
+      color: #e9340b;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .divider {
+      width: 55px;
+      height: 4px;
+      border-radius: 20px;
+      background: #ff9b19;
+      margin: 22px auto;
+    }
+
+    .instructions {
+      color: #79584d;
+      font-size: 13px;
+      line-height: 1.65;
+      text-align: center;
+    }
+
+    .spei-container {
+      text-align: center;
+    }
+
+    .spei {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 8px 13px;
+      background: #fff1e8;
+      border-radius: 20px;
+      color: #d93c0c;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .footer {
+      margin-top: 22px;
+      color: rgba(255,255,255,.85);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <div class="logo-container">
+      <img
+        src="logo.png"
+        alt="Alitas y Hamburguesas Casa Don Pedro"
+        class="logo"
+      >
+    </div>
+
+    <h1 class="business-name">Casa Don Pedro</h1>
+    <p class="subtitle">Alitas y Hamburguesas · Pago por transferencia</p>
+
+    <section class="card">
+
+      <p class="label">Beneficiario</p>
+      <p class="value">Leidy Gabriela Lopez Cortes</p>
+
+      <p class="label">Institución</p>
+      <p class="value">Mercado Pago W</p>
+
+      <p class="label">CLABE</p>
+      <p class="clabe" id="clabe">722969069976381336</p>
+
+      <button class="copy-button" onclick="copiarClabe()">
+        Copiar CLABE
+      </button>
+
+      <div class="status" id="status"></div>
+
+      <div class="divider"></div>
+
+      <p class="instructions">
+        Copia la CLABE, abre la aplicación de tu banco
+        y realiza tu transferencia.
+      </p>
+
+      <div class="spei-container">
+        <span class="spei">TRANSFERENCIA SPEI</span>
+      </div>
+
+    </section>
+
+    <p class="footer">
+      Verifica los datos antes de realizar tu transferencia.
+    </p>
+
+  </main>
+
+  <script>
+    function copiarClabe() {
+      const clabe = document.getElementById("clabe").innerText;
+      const status = document.getElementById("status");
+
+      navigator.clipboard.writeText(clabe)
+        .then(() => {
+          status.innerText = "✓ CLABE copiada";
+
+          setTimeout(() => {
+            status.innerText = "";
+          }, 2500);
+        })
+        .catch(() => {
+          const textarea = document.createElement("textarea");
+          textarea.value = clabe;
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textarea);
+
+          status.innerText = "✓ CLABE copiada";
+        });
+    }
+  </script>
+
+</body>
+</html>
