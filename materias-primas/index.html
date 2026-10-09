@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172c43">
+  <title>Transferencia | Materias Primas</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 35px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      background: #f4f5f2;
+      color: #172c43;
+    }
+    main {
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+    .logo {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      border-radius: 50%;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-size: 25px;
+      line-height: 1.2;
+      margin: 0 0 8px;
+    }
+    .subtitle {
+      color: #697789;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #e3e7e9;
+      border-radius: 24px;
+      padding: 28px 24px;
+      text-align: left;
+      box-shadow: 0 12px 40px #172c4310;
+    }
+    .label {
+      font-size: 11px;
+      letter-spacing: 1.2px;
+      color: #788697;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+    .value {
+      font-size: 17px;
+      font-weight: bold;
+      margin: 0 0 24px;
+    }
+    .clabe {
+      font-size: 21px;
+      font-weight: bold;
+      letter-spacing: .4px;
+      overflow-wrap: anywhere;
+      margin: 0 0 18px;
+    }
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 13px;
+      padding: 17px;
+      background: #172c43;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:active { background: #284a69; }
+    #status {
+      text-align: center;
+      min-height: 22px;
+      color: #187451;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+    .line {
+      height: 2px;
+      width: 46px;
+      background: #b9a477;
+      margin: 18px auto 22px;
+    }
+    .help {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #6e7984;
+      text-align: center;
+    }
+    .footer {
+      font-size: 12px;
+      color: #85909b;
+      margin-top: 25px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="logo.png"
+         alt="Materias Primas"
+         class="logo">
+
+    <h1>Materias Primas</h1>
+    <p class="subtitle">
+      Y alimento para mascotas
+      <br>Pago por transferencia bancaria
+    </p>
+
+    <section class="card">
+      <div class="label">Beneficiario</div>
+      <p class="value">José Manuel Pérez</p>
+
+      <div class="label">Institución</div>
+      <p class="value">Spin by OXXO</p>
+
+      <div class="label">CLABE interbancaria</div>
+      <p class="clabe" id="clabe">
+        728969000066723773
+      </p>
+
+      <button onclick="copiarClabe()">
+        Copiar CLABE
+      </button>
+
+      <div id="status" role="status"
+           aria-live="polite"></div>
+
+      <div class="line"></div>
+
+      <p class="help">
+        1. Copia la CLABE.<br>
+        2. Abre la aplicación de tu banco.<br>
+        3. Realiza tu transferencia SPEI.
+      </p>
+    </section>
+
+    <p class="footer">
+      Verifica el beneficiario antes de pagar.<br>
+      Esta página no procesa pagos.
+    </p>
+  </main>
+
+  <script>
+    async function copiarClabe() {
+      const clabe = "728969000066723773";
+      const status = document.getElementById("status");
+
+      try {
+        await navigator.clipboard.writeText(clabe);
+        status.textContent = "✓ CLABE copiada";
+      } catch (error) {
+        status.textContent =
+          "Selecciona la CLABE para copiarla.";
+      }
+    }
+  </script>
+</body>
+</html>
