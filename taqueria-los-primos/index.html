@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+  <title>Pago | Taquería Los Primos</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(
+        circle at top,
+        #40200c 0%,
+        #19120d 40%,
+        #090909 100%
+      );
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px 18px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 430px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      border-radius: 50%;
+      margin-bottom: 18px;
+      border: 2px solid #ff6a00;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 7px;
+    }
+
+    .subtitle {
+      color: #c9b8a6;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: #ffffff;
+      color: #221b16;
+      border-radius: 25px;
+      padding: 28px 23px;
+      text-align: left;
+      box-shadow: 0 20px 55px rgba(0,0,0,.35);
+    }
+
+    .label {
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #aa6236;
+      margin-bottom: 8px;
+    }
+
+    .value {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    .number {
+      font-size: 22px;
+      font-weight: 900;
+      color: #e65b00;
+      letter-spacing: 0.5px;
+      overflow-wrap: anywhere;
+      margin-bottom: 18px;
+      line-height: 1.4;
+    }
+
+    button {
+      width: 100%;
+      background: linear-gradient(
+        135deg,
+        #ff8500,
+        #ef4b00
+      );
+      border: none;
+      border-radius: 14px;
+      color: white;
+      padding: 17px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(.98);
+    }
+
+    .status {
+      min-height: 22px;
+      text-align: center;
+      color: #16834e;
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    .divider {
+      width: 55px;
+      height: 4px;
+      background: #ff8500;
+      border-radius: 20px;
+      margin: 20px auto;
+    }
+
+    .instructions {
+      font-size: 13px;
+      line-height: 1.7;
+      text-align: center;
+      color: #73665e;
+    }
+
+    .footer {
+      margin-top: 23px;
+      color: #a59b92;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+
+    <img
+      src="logo.png"
+      alt="Taquería Los Primos"
+      class="logo"
+    >
+
+    <h1>Taquería Los Primos</h1>
+    <p class="subtitle">
+      De Arandas, Jalisco<br>
+      Datos para realizar tu pago
+    </p>
+
+    <section class="card">
+
+      <p class="label">Beneficiario</p>
+      <p class="value">Mario Alberto</p>
+
+      <p class="label">Institución bancaria</p>
+      <p class="value">BanCoppel</p>
+
+      <p class="label">Número de tarjeta</p>
+      <p class="number">
+        4169 1608 2971 3198
+      </p>
+
+      <button onclick="copiarNumero()">
+        Copiar número de tarjeta
+      </button>
+
+      <div
+        class="status"
+        id="status"
+        role="status"
+        aria-live="polite"
+      ></div>
+
+      <div class="divider"></div>
+
+      <p class="instructions">
+        1. Copia el número de tarjeta.<br>
+        2. Abre la aplicación de tu banco.<br>
+        3. Selecciona transferencia a tarjeta,
+        si tu banco lo permite.<br>
+        4. Verifica el destinatario y realiza
+        tu pago.
+      </p>
+
+    </section>
+
+    <p class="footer">
+      Verifica los datos antes de transferir.<br>
+      Esta página no procesa pagos.
+    </p>
+
+  </main>
+
+  <script>
+    async function copiarNumero() {
+      const numero = "4169160829713198";
+      const status = document.getElementById("status");
+
+      try {
+        await navigator.clipboard.writeText(numero);
+        status.textContent = "✓ Número copiado";
+      } catch (error) {
+        status.textContent =
+          "Selecciona y copia el número manualmente.";
+      }
+    }
+  </script>
+
+</body>
+</html>
