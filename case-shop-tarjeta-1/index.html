@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071321">
+  <title>Transferencias | Case Shop!</title>
+
+  <style>
+    :root {
+      --fondo: #071321;
+      --tarjeta: #101f32;
+      --borde: #26394b;
+      --turquesa: #37e0d3;
+      --texto: #f4f9ff;
+      --gris: #a8bacb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(
+        ellipse at 50% -20%,
+        #12547b 0%,
+        #071321 58%
+      );
+      font-family: Arial, sans-serif;
+      color: var(--texto);
+    }
+
+    main {
+      max-width: 470px;
+      margin: auto;
+      padding: 32px 20px 40px;
+    }
+
+    header {
+      text-align: center;
+    }
+
+    .logo {
+      width: 145px;
+      height: 145px;
+      object-fit: contain;
+      border-radius: 24px;
+    }
+
+    .etiqueta {
+      color: var(--turquesa);
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      font-weight: bold;
+      margin: 18px 0 8px;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin: 0 0 10px;
+    }
+
+    .descripcion {
+      font-size: 14px;
+      color: var(--gris);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .cuenta {
+      background: linear-gradient(
+        145deg, #15283d, #0d1b2d
+      );
+      border: 1px solid var(--borde);
+      border-radius: 22px;
+      padding: 23px;
+      margin: 15px 0;
+      box-shadow: 0 12px 28px #0003;
+    }
+
+    .banco {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .tipo {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: var(--gris);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .numero {
+      font-size: clamp(19px, 5vw, 25px);
+      font-weight: bold;
+      letter-spacing: 0.3px;
+      overflow-wrap: anywhere;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .titular {
+      font-size: 14px;
+      color: #d4e1ed;
+      margin: 15px 0 22px;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 15px;
+      font-weight: bold;
+      color: #061423;
+      background: linear-gradient(
+        100deg, #35e0d0, #38aaff
+      );
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.99);
+    }
+
+    .estado {
+      text-align: center;
+      color: var(--turquesa);
+      font-size: 13px;
+      min-height: 22px;
+      margin-top: 15px;
+    }
+
+    footer {
+      text-align: center;
+      color: #94aabd;
+      font-size: 12px;
+      line-height: 1.6;
+      margin-top: 25px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+
+    <header>
+      <img
+        src="logo.png"
+        alt="Case Shop!"
+        class="logo"
+      >
+
+      <p class="etiqueta">
+        PAGO POR TRANSFERENCIA
+      </p>
+
+      <h1>Elige tu banco</h1>
+
+      <p class="descripcion">
+        Copia los datos bancarios de tu preferencia
+        y realiza tu transferencia desde tu aplicación.
+      </p>
+    </header>
+
+    <!-- PRIMER BANCO -->
+    <section class="cuenta">
+
+      <div class="banco">Banco Azteca</div>
+
+      <div class="tipo">
+        NÚMERO / CLABE POR CONFIRMAR
+      </div>
+
+      <div class="numero" id="numero1">
+        722969010404869450
+      </div>
+
+      <p class="titular">
+        Titular: <strong>MARLENE ALONSO</strong>
+      </p>
+
+      <button
+        id="boton1"
+        onclick="copiar('numero1','boton1')"
+      >
+        Copiar número
+      </button>
+
+    </section>
+
+    <!-- SEGUNDO BANCO -->
+    <section class="cuenta">
+
+      <div class="banco">BBVA</div>
+
+      <div class="tipo">
+        NÚMERO DE TARJETA
+      </div>
+
+      <div class="numero" id="numero2">
+        4152314171134417
+      </div>
+
+      <p class="titular">
+        Titular: <strong>MARLENE ALONSO</strong>
+      </p>
+
+      <button
+        id="boton2"
+        onclick="copiar('numero2','boton2')"
+      >
+        Copiar número
+      </button>
+
+    </section>
+
+    <div
+      class="estado"
+      id="estado"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <footer>
+      Verifica los datos del destinatario
+      antes de confirmar la transferencia.
+      <br><br>
+      Esta página no procesa pagos.
+    </footer>
+
+  </main>
+
+  <script>
+    async function copiar(numeroId, botonId) {
+      const numero = document
+        .getElementById(numeroId)
+        .textContent
+        .trim();
+
+      const boton = document.getElementById(botonId);
+      const estado = document.getElementById("estado");
+
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(numero);
+        } else {
+          const campo = document.createElement("textarea");
+          campo.value = numero;
+          campo.style.position = "fixed";
+          campo.style.opacity = "0";
+
+          document.body.appendChild(campo);
+          campo.select();
+
+          const resultado = document.execCommand("copy");
+          campo.remove();
+
+          if (!resultado) {
+            throw new Error("No se pudo copiar");
+          }
+        }
+
+        boton.textContent = "✓ Copiado";
+        estado.textContent = "Número copiado correctamente";
+
+        setTimeout(() => {
+          boton.textContent = "Copiar número";
+        }, 2200);
+
+      } catch (error) {
+        estado.textContent =
+          "Mantén presionado el número para copiarlo.";
+      }
+    }
+  </script>
+
+</body>
+</html>
