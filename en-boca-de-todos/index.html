@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#bc102a">
+
+  <title>Transferencias | En Boca de Todos</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, #811a2c, #180e14 65%);
+      color: #ffffff;
+    }
+
+    main {
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 35px 20px 40px;
+    }
+
+    header {
+      text-align: center;
+    }
+
+    .logo {
+      width: 190px;
+      max-width: 80%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 22px;
+    }
+
+    .etiqueta {
+      color: #ff6a78;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 31px;
+      line-height: 1.15;
+      margin: 0 0 12px;
+    }
+
+    .descripcion {
+      color: #d9bdc4;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .cuenta {
+      background: linear-gradient(
+        145deg, #302027, #20151b
+      );
+      border: 1px solid #693340;
+      border-radius: 24px;
+      padding: 26px 22px;
+      box-shadow: 0 15px 35px #0005;
+    }
+
+    .banco {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .banco-icono {
+      background: #e21d38;
+      color: white;
+      border-radius: 12px;
+      padding: 12px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .banco-nombre {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .campo-label {
+      color: #bc9ca5;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      font-weight: bold;
+      margin-bottom: 9px;
+    }
+
+    .numero {
+      font-size: clamp(19px, 5vw, 25px);
+      font-weight: bold;
+      line-height: 1.5;
+      letter-spacing: 0.2px;
+      font-variant-numeric: tabular-nums;
+      overflow-wrap: anywhere;
+      margin-bottom: 25px;
+    }
+
+    .titular {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 17px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(
+        110deg, #ff3d51, #d20c2b
+      );
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 20px #ff294533;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .estado {
+      color: #ff9ca9;
+      font-size: 13px;
+      text-align: center;
+      min-height: 22px;
+      margin-top: 16px;
+    }
+
+    .aviso {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 26px;
+      padding: 18px;
+      border-radius: 15px;
+      background: #ffffff0b;
+      border: 1px solid #ffffff19;
+      color: #d9bdc4;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    footer {
+      margin-top: 35px;
+      text-align: center;
+      font-size: 11px;
+      color: #a88b92;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+
+    <header>
+      <img
+        src="logo.png"
+        alt="En Boca de Todos"
+        class="logo"
+      >
+
+      <p class="etiqueta">
+        EN BOCA DE TODOS
+      </p>
+
+      <h1>Pago por transferencia</h1>
+
+      <p class="descripcion">
+        Copia los datos bancarios y realiza
+        tu transferencia de forma sencilla
+        desde la aplicación de tu banco.
+      </p>
+    </header>
+
+    <section class="cuenta">
+
+      <div class="banco">
+        <div class="banco-icono">B</div>
+        <div class="banco-nombre">Banamex</div>
+      </div>
+
+      <div class="campo-label">
+        CLABE INTERBANCARIA
+      </div>
+
+      <div class="numero" id="clabe">
+        002180702273249005
+      </div>
+
+      <div class="campo-label">
+        NOMBRE DEL BENEFICIARIO
+      </div>
+
+      <div class="titular">
+        SILVIA FONTAN
+      </div>
+
+      <button
+        id="botonCopiar"
+        type="button"
+        onclick="copiarClabe()"
+      >
+        Copiar CLABE
+      </button>
+
+      <div
+        class="estado"
+        id="estado"
+        role="status"
+        aria-live="polite"
+      ></div>
+
+    </section>
+
+    <div class="aviso">
+      <span>🔒</span>
+      <span>
+        Verifica que el nombre del beneficiario
+        sea correcto antes de confirmar tu
+        transferencia. Conserva tu comprobante
+        de pago.
+      </span>
+    </div>
+
+    <footer>
+      EN BOCA DE TODOS
+      <br>
+      Comida y algo más...
+      <br><br>
+      Esta página muestra datos bancarios.
+      No realiza ni confirma transferencias.
+    </footer>
+
+  </main>
+
+  <script>
+    async function copiarClabe() {
+      const numero = document
+        .getElementById("clabe")
+        .textContent
+        .replace(/\s/g, "");
+
+      const boton = document
+        .getElementById("botonCopiar");
+
+      const estado = document
+        .getElementById("estado");
+
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(numero);
+        } else {
+          const campo = document.createElement("textarea");
+          campo.value = numero;
+          campo.style.position = "fixed";
+          campo.style.opacity = "0";
+
+          document.body.appendChild(campo);
+          campo.select();
+
+          const copiado = document.execCommand("copy");
+          campo.remove();
+
+          if (!copiado) {
+            throw new Error("No se pudo copiar");
+          }
+        }
+
+        boton.textContent = "✓ CLABE copiada";
+        estado.textContent = "¡Lista para pegar en tu banco!";
+
+        setTimeout(() => {
+          boton.textContent = "Copiar CLABE";
+        }, 2500);
+
+      } catch (error) {
+        estado.textContent =
+          "Mantén presionada la CLABE para copiarla.";
+      }
+    }
+  </script>
+</body>
+</html>
