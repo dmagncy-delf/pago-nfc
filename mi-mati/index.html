@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f9f6f0">
+
+  <title>Transferencias | Mi Mati</title>
+
+  <style>
+    :root {
+      --verde: #007f79;
+      --verde-oscuro: #17514e;
+      --rosa: #c50067;
+      --dorado: #dfa525;
+      --fondo: #f9f6f0;
+      --texto: #193b39;
+      --gris: #75817e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at top,
+          #ffffff 0%,
+          #f9f6f0 65%
+        );
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--texto);
+    }
+
+    main {
+      width: 100%;
+      max-width: 460px;
+      margin: auto;
+      padding: 30px 20px 45px;
+    }
+
+    header {
+      text-align: center;
+    }
+
+    .logo {
+      display: block;
+      width: 225px;
+      max-width: 85%;
+      height: auto;
+      margin: 0 auto 18px;
+      object-fit: contain;
+    }
+
+    .etiqueta {
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2.5px;
+      color: var(--verde);
+      text-transform: uppercase;
+      margin-bottom: 13px;
+    }
+
+    h1 {
+      font-size: 29px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0 0 13px;
+    }
+
+    .descripcion {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--gris);
+      margin: 0 0 28px;
+    }
+
+    .cuenta {
+      background: white;
+      border: 1px solid #e8e8df;
+      border-radius: 24px;
+      padding: 27px 22px;
+      box-shadow: 0 15px 45px #123c3215;
+    }
+
+    .banco {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 22px;
+      margin-bottom: 23px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .banco-nombre {
+      font-size: 24px;
+      font-weight: bold;
+      color: #553093;
+    }
+
+    .banco-icono {
+      background: #f0e9fa;
+      color: #6939a5;
+      border-radius: 14px;
+      padding: 12px 15px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .campo-label {
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      color: #87928e;
+      margin-bottom: 12px;
+    }
+
+    .numero {
+      font-size: clamp(18px, 5vw, 24px);
+      font-weight: bold;
+      letter-spacing: 0.2px;
+      overflow-wrap: anywhere;
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 29px;
+      color: var(--verde-oscuro);
+    }
+
+    .titular {
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: bold;
+      margin-bottom: 27px;
+    }
+
+    button {
+      width: 100%;
+      padding: 17px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(
+        110deg,
+        #009e94,
+        #006e69
+      );
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 20px #007f7925;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .estado {
+      min-height: 21px;
+      margin-top: 15px;
+      font-size: 13px;
+      text-align: center;
+      color: var(--verde);
+    }
+
+    .aviso {
+      margin-top: 24px;
+      padding: 18px;
+      background: #fffaf0;
+      border: 1px solid #f1e5ca;
+      border-radius: 16px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #7c704f;
+    }
+
+    .adorno {
+      width: 70px;
+      height: 3px;
+      background: linear-gradient(
+        90deg,
+        var(--rosa),
+        var(--dorado),
+        var(--verde)
+      );
+      border-radius: 10px;
+      margin: 28px auto;
+    }
+
+    footer {
+      text-align: center;
+      color: #85908a;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .marca {
+      color: var(--rosa);
+      font-weight: bold;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+
+    <header>
+
+      <img
+        src="logo.png"
+        alt="Mi Mati - Sazón con amor de mamá"
+        class="logo"
+      >
+
+      <p class="etiqueta">
+        MI MATI · PAGOS
+      </p>
+
+      <h1>Pago por transferencia</h1>
+
+      <p class="descripcion">
+        Gracias por tu compra.
+        Copia nuestros datos bancarios
+        para realizar tu transferencia
+        desde tu aplicación.
+      </p>
+
+    </header>
+
+    <section class="cuenta">
+
+      <div class="banco">
+        <span class="banco-nombre">
+          Nu México
+        </span>
+
+        <span class="banco-icono">
+          Nu
+        </span>
+      </div>
+
+      <div class="campo-label">
+        CLABE INTERBANCARIA
+      </div>
+
+      <div class="numero" id="clabe">
+        638180000140216224
+      </div>
+
+      <div class="campo-label">
+        NOMBRE DE LA BENEFICIARIA
+      </div>
+
+      <div class="titular">
+        GUADALUPE QUIJANO ESCAMILLA
+      </div>
+
+      <button
+        type="button"
+        id="botonCopiar"
+        onclick="copiarClabe()"
+      >
+        Copiar CLABE
+      </button>
+
+      <div
+        id="estado"
+        class="estado"
+        role="status"
+        aria-live="polite"
+      ></div>
+
+    </section>
+
+    <div class="aviso">
+      Verifica que el nombre de la beneficiaria
+      coincida antes de confirmar tu pago.
+      Conserva tu comprobante de transferencia.
+    </div>
+
+    <div class="adorno"></div>
+
+    <footer>
+      <span class="marca">
+        Mi Mati
+      </span>
+
+      <br>
+
+      Sazón con amor de mamá
+
+      <br><br>
+
+      Esta página únicamente muestra
+      información bancaria.
+      No realiza ni confirma pagos.
+    </footer>
+
+  </main>
+
+  <script>
+    async function copiarClabe() {
+
+      const clabe = document
+        .getElementById("clabe")
+        .textContent
+        .replace(/\s/g, "");
+
+      const boton = document
+        .getElementById("botonCopiar");
+
+      const estado = document
+        .getElementById("estado");
+
+      try {
+
+        if (
+          navigator.clipboard &&
+          window.isSecureContext
+        ) {
+
+          await navigator.clipboard.writeText(clabe);
+
+        } else {
+
+          const campo =
+            document.createElement("textarea");
+
+          campo.value = clabe;
+          campo.style.position = "fixed";
+          campo.style.opacity = "0";
+
+          document.body.appendChild(campo);
+          campo.select();
+
+          const copiado =
+            document.execCommand("copy");
+
+          campo.remove();
+
+          if (!copiado) {
+            throw new Error("Error al copiar");
+          }
+        }
+
+        boton.textContent = "✓ CLABE copiada";
+
+        estado.textContent =
+          "¡Lista para pegar en tu banco!";
+
+        setTimeout(() => {
+          boton.textContent = "Copiar CLABE";
+        }, 2500);
+
+      } catch (error) {
+
+        estado.textContent =
+          "Mantén presionada la CLABE para copiarla.";
+
+      }
+    }
+  </script>
+
+</body>
+</html>
