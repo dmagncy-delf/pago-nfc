@@ -1,1 +1,375 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#21140d">
+
+  <title>Transferencias | Crazy Cat Café</title>
+
+  <style>
+    :root {
+      --cafe: #21140d;
+      --cafe-claro: #382519;
+      --crema: #fff1d7;
+      --dorado: #f2b547;
+      --naranja: #e97825;
+      --gris: #c8b7a1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(
+          ellipse at 50% -10%,
+          #65401f 0%,
+          #2e1d13 44%,
+          #17100b 90%
+        );
+      color: var(--crema);
+    }
+
+    main {
+      max-width: 470px;
+      margin: auto;
+      padding: 32px 20px 45px;
+    }
+
+    header {
+      text-align: center;
+    }
+
+    .logo {
+      display: block;
+      width: 230px;
+      max-width: 90%;
+      height: auto;
+      margin: 0 auto 20px;
+      border-radius: 24px;
+    }
+
+    .etiqueta {
+      color: var(--dorado);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 32px;
+      line-height: 1.15;
+      margin: 0 0 12px;
+      letter-spacing: -0.6px;
+    }
+
+    .descripcion {
+      color: var(--gris);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 340px;
+      margin: 0 auto 28px;
+    }
+
+    .cuenta {
+      background: linear-gradient(
+        145deg,
+        #fff8e9,
+        #f4e4ca
+      );
+      color: var(--cafe);
+      border-radius: 24px;
+      padding: 26px 22px;
+      border: 1px solid #ead5ad;
+      box-shadow: 0 16px 45px #0006;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cuenta::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(
+        90deg,
+        #c76c22,
+        #ffba4d,
+        #e97825
+      );
+    }
+
+    .banco {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 10px 0 24px;
+    }
+
+    .banco-nombre {
+      color: #1557a5;
+      font-size: 27px;
+      font-weight: 800;
+    }
+
+    .banco-etiqueta {
+      color: #875324;
+      background: #f6dfb5;
+      padding: 8px 11px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .separador {
+      height: 1px;
+      background: #dec9aa;
+      margin-bottom: 25px;
+    }
+
+    .campo {
+      margin-bottom: 25px;
+    }
+
+    .campo-label {
+      display: block;
+      color: #8e7151;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+
+    .numero {
+      font-size: clamp(19px, 5vw, 25px);
+      font-weight: 800;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+      font-variant-numeric: tabular-nums;
+      user-select: all;
+    }
+
+    .titular {
+      font-size: 17px;
+      font-weight: 750;
+      line-height: 1.5;
+    }
+
+    button {
+      width: 100%;
+      padding: 18px;
+      border: none;
+      border-radius: 15px;
+      background: linear-gradient(
+        110deg,
+        #d76b20,
+        #f3a333
+      );
+      color: #27170b;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 7px 20px #bb711c33;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .estado {
+      margin-top: 15px;
+      min-height: 22px;
+      text-align: center;
+      color: #6c481f;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .aviso {
+      margin-top: 24px;
+      padding: 18px;
+      border: 1px solid #ffffff24;
+      border-radius: 16px;
+      background: #ffffff0b;
+      color: #d7c3a7;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .aviso strong {
+      color: var(--dorado);
+    }
+
+    footer {
+      margin-top: 32px;
+      text-align: center;
+      color: #bca68e;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+
+    <header>
+      <img
+        src="logo.png"
+        alt="Crazy Cat Café"
+        class="logo"
+      >
+
+      <p class="etiqueta">
+        CRAZY CAT CAFÉ ☕
+      </p>
+
+      <h1>Pago por transferencia</h1>
+
+      <p class="descripcion">
+        ¡Gracias por tu compra!
+        Copia nuestros datos bancarios
+        y realiza tu transferencia desde
+        tu aplicación bancaria.
+      </p>
+    </header>
+
+    <section class="cuenta">
+
+      <div class="banco">
+        <div class="banco-nombre">BBVA</div>
+        <span class="banco-etiqueta">
+          Transferencia
+        </span>
+      </div>
+
+      <div class="separador"></div>
+
+      <div class="campo">
+        <span class="campo-label">
+          CLABE INTERBANCARIA
+        </span>
+
+        <div class="numero" id="clabe">
+          012180015517706156
+        </div>
+      </div>
+
+      <div class="campo">
+        <span class="campo-label">
+          NOMBRE DEL BENEFICIARIO
+        </span>
+
+        <div class="titular">
+          Jonathan German Mora Avilés
+        </div>
+      </div>
+
+      <button
+        type="button"
+        id="botonCopiar"
+        onclick="copiarClabe()"
+      >
+        Copiar CLABE
+      </button>
+
+      <div
+        class="estado"
+        id="estado"
+        role="status"
+        aria-live="polite"
+      ></div>
+
+    </section>
+
+    <div class="aviso">
+      <strong>Importante:</strong>
+      Antes de confirmar tu transferencia,
+      verifica que el nombre del beneficiario
+      y los datos bancarios coincidan.
+      Conserva tu comprobante.
+    </div>
+
+    <footer>
+      <strong>Crazy Cat Café</strong>
+      <br>
+      Café, gatitos y buenos momentos 🐾
+      <br><br>
+      Esta página no procesa ni confirma pagos.
+    </footer>
+
+  </main>
+
+  <script>
+    async function copiarClabe() {
+
+      const clabe = document
+        .getElementById("clabe")
+        .textContent
+        .replace(/\s/g, "");
+
+      const boton = document
+        .getElementById("botonCopiar");
+
+      const estado = document
+        .getElementById("estado");
+
+      try {
+
+        if (
+          navigator.clipboard &&
+          window.isSecureContext
+        ) {
+
+          await navigator.clipboard.writeText(clabe);
+
+        } else {
+
+          const campo = document.createElement("textarea");
+          campo.value = clabe;
+          campo.style.position = "fixed";
+          campo.style.opacity = "0";
+
+          document.body.appendChild(campo);
+          campo.select();
+
+          const copiado = document.execCommand("copy");
+          campo.remove();
+
+          if (!copiado) {
+            throw new Error("No se pudo copiar");
+          }
+        }
+
+        boton.textContent = "✓ CLABE copiada";
+
+        estado.textContent =
+          "¡Lista para pegar en tu aplicación bancaria!";
+
+        setTimeout(() => {
+          boton.textContent = "Copiar CLABE";
+        }, 2500);
+
+      } catch (error) {
+
+        estado.textContent =
+          "Mantén presionada la CLABE para copiarla.";
+      }
+    }
+  </script>
+
+</body>
+</html>
+
