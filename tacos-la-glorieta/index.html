@@ -1,0 +1,453 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#16091f">
+  <meta name="description" content="Datos de transferencia para Tacos de Guisado La Glorieta">
+  <title>Transferencias | La Glorieta</title>
+
+  <style>
+    :root {
+      --fondo: #16091f;
+      --tarjeta: #25132f;
+      --rosa: #ff269d;
+      --morado: #9b35dc;
+      --blanco: #ffffff;
+      --gris: #cbb9d4;
+      --dorado: #ffc94b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(
+          ellipse at 50% -15%,
+          #58216b 0%,
+          #261132 44%,
+          #12091a 90%
+        );
+      color: var(--blanco);
+    }
+
+    main {
+      max-width: 470px;
+      margin: 0 auto;
+      padding: 32px 20px 45px;
+    }
+
+    header {
+      text-align: center;
+    }
+
+    .logo {
+      display: block;
+      width: 230px;
+      max-width: 85%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+    }
+
+    .etiqueta {
+      color: var(--rosa);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 31px;
+      line-height: 1.15;
+      letter-spacing: -0.7px;
+      margin: 0 0 12px;
+    }
+
+    .descripcion {
+      color: var(--gris);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 350px;
+      margin: 0 auto 27px;
+    }
+
+    .cuenta {
+      background: linear-gradient(
+        145deg,
+        #32203e,
+        #201329
+      );
+      border: 1px solid #553463;
+      border-radius: 23px;
+      padding: 24px 21px;
+      margin-bottom: 17px;
+      box-shadow: 0 15px 35px #0004;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cuenta::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(
+        90deg,
+        #ff269d,
+        #a33cff,
+        #ffca44
+      );
+    }
+
+    .banco {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 10px 0 24px;
+    }
+
+    .banco-nombre {
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .banco-etiqueta {
+      background: #ff269d20;
+      border: 1px solid #ff269d4d;
+      color: #ff8dd1;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 8px 11px;
+      border-radius: 25px;
+    }
+
+    .separador {
+      height: 1px;
+      background: #ffffff20;
+      margin-bottom: 22px;
+    }
+
+    .campo {
+      margin-bottom: 23px;
+    }
+
+    .campo-label {
+      display: block;
+      color: #c8aacb;
+      font-size: 11px;
+      letter-spacing: 1.3px;
+      font-weight: 750;
+      margin-bottom: 10px;
+    }
+
+    .numero {
+      font-size: clamp(19px, 5vw, 25px);
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+      user-select: all;
+    }
+
+    .titular {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    button {
+      width: 100%;
+      padding: 17px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(
+        110deg,
+        #f9239d,
+        #a33cff
+      );
+      color: white;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 7px 20px #db278c30;
+      transition: transform .15s ease;
+    }
+
+    button:active {
+      transform: scale(.98);
+    }
+
+    button:focus-visible {
+      outline: 3px solid var(--dorado);
+      outline-offset: 3px;
+    }
+
+    .estado {
+      text-align: center;
+      color: var(--dorado);
+      font-size: 13px;
+      font-weight: 650;
+      min-height: 20px;
+      margin-top: 13px;
+    }
+
+    .aviso {
+      margin-top: 25px;
+      background: #ffffff0b;
+      border: 1px solid #ffffff24;
+      border-radius: 16px;
+      padding: 18px;
+      color: #d9c5df;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .aviso strong {
+      color: var(--dorado);
+    }
+
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.8;
+      color: #b9a3c4;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+
+    <header>
+
+      <img
+        src="logo.png"
+        alt="Tacos de Guisado La Glorieta"
+        class="logo"
+      >
+
+      <p class="etiqueta">
+        TACOS DE GUISADO LA GLORIETA
+      </p>
+
+      <h1>Pago por transferencia</h1>
+
+      <p class="descripcion">
+        ¡Gracias por tu compra!
+        Elige tu banco, copia el número de tarjeta
+        y realiza tu transferencia desde tu
+        aplicación bancaria.
+      </p>
+
+    </header>
+
+    <!-- BANCO AZTECA -->
+    <section class="cuenta">
+
+      <div class="banco">
+
+        <div class="banco-nombre">
+          Banco Azteca
+        </div>
+
+        <span class="banco-etiqueta">
+          Tarjeta
+        </span>
+
+      </div>
+
+      <div class="separador"></div>
+
+      <div class="campo">
+
+        <span class="campo-label">
+          NÚMERO DE TARJETA
+        </span>
+
+        <div class="numero" id="numero1">
+          4027660073818579
+        </div>
+
+      </div>
+
+      <div class="campo">
+
+        <span class="campo-label">
+          NOMBRE DE LA BENEFICIARIA
+        </span>
+
+        <div class="titular">
+          Emma Vieyra Guzmán
+        </div>
+
+      </div>
+
+      <button
+        id="boton1"
+        type="button"
+        onclick="copiarNumero('numero1','boton1')"
+      >
+        Copiar número
+      </button>
+
+    </section>
+
+    <!-- BANCO SANTANDER -->
+    <section class="cuenta">
+
+      <div class="banco">
+
+        <div class="banco-nombre">
+          Santander
+        </div>
+
+        <span class="banco-etiqueta">
+          Tarjeta
+        </span>
+
+      </div>
+
+      <div class="separador"></div>
+
+      <div class="campo">
+
+        <span class="campo-label">
+          NÚMERO DE TARJETA
+        </span>
+
+        <div class="numero" id="numero2">
+          5579083048610923
+        </div>
+
+      </div>
+
+      <div class="campo">
+
+        <span class="campo-label">
+          NOMBRE DE LA BENEFICIARIA
+        </span>
+
+        <div class="titular">
+          Emma Vieyra Guzmán
+        </div>
+
+      </div>
+
+      <button
+        id="boton2"
+        type="button"
+        onclick="copiarNumero('numero2','boton2')"
+      >
+        Copiar número
+      </button>
+
+    </section>
+
+    <div
+      class="estado"
+      id="estado"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <div class="aviso">
+
+      <strong>Importante:</strong>
+      Antes de confirmar tu transferencia,
+      verifica que el número y el nombre
+      de la beneficiaria sean correctos.
+      Conserva tu comprobante de pago.
+
+    </div>
+
+    <footer>
+
+      <strong>Tacos de Guisado La Glorieta</strong>
+      <br>
+      🌮 ¡Gracias por tu preferencia!
+      <br><br>
+      Esta página muestra datos bancarios.
+      No procesa ni confirma transferencias.
+
+    </footer>
+
+  </main>
+
+  <script>
+    async function copiarNumero(numeroId, botonId) {
+
+      const numero = document
+        .getElementById(numeroId)
+        .textContent
+        .replace(/\s/g, "");
+
+      const boton = document
+        .getElementById(botonId);
+
+      const estado = document
+        .getElementById("estado");
+
+      try {
+
+        if (
+          navigator.clipboard &&
+          window.isSecureContext
+        ) {
+
+          await navigator.clipboard.writeText(numero);
+
+        } else {
+
+          const campo = document.createElement("textarea");
+
+          campo.value = numero;
+          campo.style.position = "fixed";
+          campo.style.opacity = "0";
+
+          document.body.appendChild(campo);
+          campo.select();
+
+          const copiado = document.execCommand("copy");
+          campo.remove();
+
+          if (!copiado) {
+            throw new Error("No se pudo copiar");
+          }
+
+        }
+
+        boton.textContent = "✓ Número copiado";
+
+        estado.textContent =
+          "Número copiado. ¡Listo para pegar!";
+
+        setTimeout(() => {
+          boton.textContent = "Copiar número";
+        }, 2500);
+
+      } catch (error) {
+
+        estado.textContent =
+          "Mantén presionado el número para copiarlo.";
+
+      }
+    }
+  </script>
+
+</body>
+</html>
